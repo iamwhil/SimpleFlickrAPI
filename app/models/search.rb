@@ -27,7 +27,8 @@ class Search < ApplicationRecord
 		uri.query = URI.encode_www_form(params)
 		@res = Net::HTTP.get_response(uri)
 
-		# Flickr API returns an oddly formatted JSON object with a weird precursor, remove it.
+		# Flickr API returns an oddly formatted JSON object with a 
+		#weird precursor and closing ')', remove it.
 		body = @res.body.gsub("jsonFlickrApi(", '')
 		body = JSON.parse(body[0, body.length-1])
 
@@ -40,14 +41,13 @@ class Search < ApplicationRecord
 				url = "https://farm#{p['farm']}.staticflickr.com/#{p['server']}/#{p['id']}_#{p['secret']}_q.jpg"
 				images << url
 			end
-			# Save the search.
 		end
-
 	end
 
 	# Update Search's count, the number of times this search has been ran.
 	def update_count
-
+		self.count += 1
+		true
 	end
 
 end
