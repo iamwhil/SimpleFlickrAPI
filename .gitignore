@@ -21,3 +21,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore keys.  Never commit keys to a repository!
+keys.txt

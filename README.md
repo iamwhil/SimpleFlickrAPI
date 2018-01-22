@@ -8,7 +8,7 @@ This app utilizes Flickr's API, and targets their endpoints with REST calls (pri
 
 It is designed to be as streamlined as possible, utilizing a single page workflow for landing, searching and sorting.  This should provide a very user friendly workflow.
 
-#MVC
+# MVC
 
 Controller: Home Controller
 
@@ -24,5 +24,5 @@ Attributes
 * count: how many times has this search been ran.
 
 Methods
-Search#get_photos: perform the search on flickr.  JSON repsonse requested, and parsed.
-Search#build_image_urls: Builds the image urls for each of the returned images.
+* Search#get_photos: perform the search on flickr.  JSON repsonse requested, and parsed.
+* Search#build_image_urls: Builds the image urls for each of the returned images.
