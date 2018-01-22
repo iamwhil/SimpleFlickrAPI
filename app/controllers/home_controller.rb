@@ -15,6 +15,7 @@ class HomeController < ApplicationController
 		unless @search.error.nil? && @search.update_count && @search.save
 			flash[:alert] = "Unable to update your search! Flickr error: #{@search.error}"
 		end
+		puts @search.images.inspect
 	end
 
 	private

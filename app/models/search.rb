@@ -22,7 +22,7 @@ class Search < ApplicationRecord
 					privacy_filter: 1,
 					safe_search: 1,
 					content_type: 1,
-					per_page: 10
+					per_page: 12
 				}
 		uri.query = URI.encode_www_form(params)
 		@res = Net::HTTP.get_response(uri)

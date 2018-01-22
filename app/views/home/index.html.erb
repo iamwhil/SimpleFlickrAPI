@@ -1,1 +1,80 @@
-"hello"
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Simple Flickr Search</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+
+	<body> 
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+	      <a class="navbar-brand" href="../">Simple Flickr Search.</a>
+	      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	        <ul class="navbar-nav mr-auto">
+	        </ul>
+	        <form class="form-inline my-3 my-lg-0">
+	          <input class="form-control mr-sm-4" type="text" placeholder="Search">
+	          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	        </form>
+	      </div>
+	    </nav>
+
+		<div class="container" style="margin-top:75px">
+			<div class="row">
+				<div class="col-sm-8">
+					<% if @search.images.nil? %>
+						<h1>How It Works</h1>
+						<p>Search will return the 12 most recent photographs matching your search on Flickr.com!</p>
+						<p>Historical searches can be seen on right, as well as their popularity.</p>
+						<p>Just search from the top of the site.</p>
+						<p>Want to clear everything? Just click our name at the top left.</p>
+					<% else %>
+						<h4 style="text-align:center">The most recent photographs for <%= @search.terms %></h4>
+						<% @search.images.each do |img| %>
+							<img src="<%= img %>" style="margin:5px" />
+						<% end %>
+					<% end %>
+				</div>
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 style="text-align:center">Historical Searches</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<% if @searches.length < 1 %>
+								<p style="text-align:center">No historical searches.</p>
+							<% else %>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Terms</th>
+											<th>Count</th>
+											<th>Date</th>
+										</tr>
+									</thead>
+									<% @searches.each do |search| %>
+										<tr>
+											<td><a href="/terms?=<%= search.terms.gsub(' ', '%20') %>"><%= search.terms %></a></td>
+											<td><%= search.count %></td>
+											<td><%= search.updated_at.strftime("%d-%m-%Y") %></td>
+										</tr>
+									<% end %>
+								</table>
+							<% end %>
+						</div>
+					</div>
+				</div>
+	    	  </div><!-- / history sidebar -->
+	    	</div><!-- /.row -->
+
+    	</div><!-- /.container -->
+
+		<!-- Bootstrap core JS. Placed at the end of the document so page loads faster. -->
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	</body>
+
+</html>
