@@ -31,7 +31,7 @@
 					<% else %>
 						<h4 style="text-align:center">The most recent photographs for <%= @search.terms %></h4>
 						<% @search.images.each do |img| %>
-							<img src="<%= img %>" style="margin:5px" />
+							<a href="<%= img.gsub("_q.jpg", ".jpg") %>"><img src="<%= img %>" style="margin:5px" /></a>
 						<% end %>
 					<% end %>
 				</div>
@@ -43,7 +43,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<% if @searches.length < 1 %>
+							<% if @searches.length < 1 || @searches.nil?%>
 								<p style="text-align:center">No historical searches.</p>
 							<% else %>
 								<table class="table table-striped">
@@ -56,7 +56,7 @@
 									</thead>
 									<% @searches.each do |search| %>
 										<tr>
-											<td><a href="/terms?=<%= search.terms.gsub(' ', '%20') %>"><%= search.terms %></a></td>
+											<td><a href="/?terms=<%= search.terms.gsub(' ', '%20') %>"><%= search.terms %></a></td>
 											<td><%= search.count %></td>
 											<td><%= search.updated_at.strftime("%d-%m-%Y") %></td>
 										</tr>

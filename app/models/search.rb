@@ -11,6 +11,8 @@ class Search < ApplicationRecord
 	attr_accessor :images # Array of returned image urls.
 	attr_accessor :error  # Error message returned from Flickr
 
+	validates_presence_of :terms
+
 	# Perform the search on Flickr.
 	# Set the images attribute accessor.
 	def get_photos

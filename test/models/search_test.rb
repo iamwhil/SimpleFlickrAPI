@@ -15,8 +15,5 @@ class SearchTest < ActiveSupport::TestCase
   		search.get_photos
   		assert_equal 3, search.error
   	end
-
-  	# Make sure that multiple searches for the same term increment the Search count.
-
   	
 end

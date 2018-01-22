@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180122205024) do
 
   create_table "searches", force: :cascade do |t|
     t.string "terms"
-    t.integer "count"
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["count"], name: "index_searches_on_count"
