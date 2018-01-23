@@ -12,6 +12,6 @@
 		<hr>
 		<h4 style="text-align:center;padding-top:10px">Historical Searches</h4>
 		<% @search.search_times.each do |time| %>
-			<p><%= time.created_at.strftime("%m-%d-%Y at %I:%M:%S %Z") %></p>
+			<p><%= time.created_at.strftime("%m-%d-%Y at %H:%M:%S %Z") %></p>
 		<% end %>
 <% end %>

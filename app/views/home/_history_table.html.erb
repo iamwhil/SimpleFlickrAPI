@@ -41,7 +41,7 @@
 		<tr>
 			<td><a href="/?terms=<%= search.terms.gsub(' ', '%20') %>"><%= search.terms %></a></td>
 			<td class="text-center"><%= search.count %></td>
-			<td><%= search.updated_at.strftime("%d-%m-%y @ %I:%M %Z") %></td>
+			<td><%= search.updated_at.strftime("%d-%m-%y @ %H:%M %Z") %></td>
 		</tr>
 	<% end %>
 </table>
