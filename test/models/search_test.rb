@@ -6,7 +6,7 @@ class SearchTest < ActiveSupport::TestCase
   	test "ensure that the search of Flickr occurs." do
   		search = Search.new(terms: "kitten puppies")
   		search.get_photos
-  		assert_equal 10, search.images.length
+  		assert_equal 12, search.images.length
   	end
 
   	# Make sure that if the search fails the error is caught
