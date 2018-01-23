@@ -15,5 +15,13 @@ class SearchTest < ActiveSupport::TestCase
   		search.get_photos
   		assert_equal 3, search.error
   	end
+
+    # Make sure that a Search time is created after the search is saved.
+    test "ensures that a SearchTime is created after a search is saved." do 
+      search = Search.new(terms: "kettle")
+      search.get_photos
+      search.save
+      assert_equal 1, search.search_times.length
+    end
   	
 end

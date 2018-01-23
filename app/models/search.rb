@@ -13,6 +13,10 @@ class Search < ApplicationRecord
 
 	validates_presence_of :terms
 
+	has_many :search_times
+
+	after_save :create_search_time
+
 	# Perform the search on Flickr.
 	# Set the images attribute accessor.
 	def get_photos
@@ -51,5 +55,11 @@ class Search < ApplicationRecord
 		self.count += 1
 		true
 	end
+
+	private 
+
+		def create_search_time
+			self.search_times.create!()
+		end
 
 end

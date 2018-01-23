@@ -24,18 +24,7 @@
 		<div class="container" style="margin-top:75px">
 			<div class="row">
 				<div class="col-sm-8">
-					<% if @search.images.nil? %>
-						<h1>How It Works</h1>
-						<p>Search will return the 12 most recent photographs matching your search on Flickr.com!</p>
-						<p>Historical searches can be seen on right, as well as their popularity.</p>
-						<p>Just search from the top of the site.</p>
-						<p>Want to clear everything? Just click our name at the top left.</p>
-					<% else %>
-						<h4 style="text-align:center">The most recent photographs for <%= @search.terms %></h4>
-						<% @search.images.each do |img| %>
-							<a href="<%= img.gsub("_q.jpg", ".jpg") %>"><img src="<%= img %>" style="margin:5px" /></a>
-						<% end %>
-					<% end %>
+					<%= render 'images_and_history' %>
 				</div>
 				<div class="col-sm-4">
 					<div class="row">

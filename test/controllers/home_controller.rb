@@ -26,6 +26,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 		assert_response :success
 		search.reload
 		assert_equal 2, search.count
+		assert_equal 2, search.search_times.length
 	end
 
 end
