@@ -1,28 +1,47 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>
-				<a href="/<%= @search.id %>/?order=terms asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
-				 Terms 
-				<a href="/<%= @search.id %>/?order=terms desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
-			</th>
-			<th>
-				<a href="/<%= @search.id %>/?order=count asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
-				 Count 
-				<a href="/<%= @search.id %>/?order=count desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
-			</th>
-			<th>
-				<a href="/<%= @search.id %>/?order=updated_at asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
-				 Date 
-				<a href="/<%= @search.id %>/?order=updated_at desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
-			</th>
+			<!-- determine in the links should include terms (from the current search) -->
+			<% if @search.id.nil? %>
+				<th>
+					<a href="/?order=terms asc"><span class="fa fa-arrow-up"></span></a>
+					 Terms 
+					<a href="/?order=terms desc"><span class="fa fa-arrow-down"></span></a>
+				</th>
+				<th>
+					<a href="/?order=count asc"><span class="fa fa-arrow-up"></span></a>
+					 Count 
+					<a href="/?order=count desc"><span class="fa fa-arrow-down"></span></a>
+				</th>
+				<th>
+					<a href="/?order=updated_at asc"><span class="fa fa-arrow-up"></span></a>
+					 Date 
+					<a href="/?order=updated_at desc"><span class="fa fa-arrow-down"></span></a>
+				</th>
+			<% else %>
+				<th>
+					<a href="/<%= @search.id %>/?order=terms asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
+					 Terms 
+					<a href="/<%= @search.id %>/?order=terms desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
+				</th>
+				<th>
+					<a href="/<%= @search.id %>/?order=count asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
+					 Count 
+					<a href="/<%= @search.id %>/?order=count desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
+				</th>
+				<th>
+					<a href="/<%= @search.id %>/?order=updated_at asc&terms=<%= @search.terms %>"><span class="fa fa-arrow-up"></span></a>
+					 Date 
+					<a href="/<%= @search.id %>/?order=updated_at desc&terms=<%= @search.terms %>"><span class="fa fa-arrow-down"></span></a>
+				</th>
+			<% end %>
 		</tr>
 	</thead>
 	<% @searches.each do |search| %>
 		<tr>
 			<td><a href="/?terms=<%= search.terms.gsub(' ', '%20') %>"><%= search.terms %></a></td>
 			<td class="text-center"><%= search.count %></td>
-			<td><%= search.updated_at.strftime("%d-%m-%Y") %></td>
+			<td><%= search.updated_at.strftime("%d-%m-%y @ %I:%M %Z") %></td>
 		</tr>
 	<% end %>
 </table>

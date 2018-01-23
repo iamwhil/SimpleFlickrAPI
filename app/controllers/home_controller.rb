@@ -44,7 +44,7 @@ class HomeController < ApplicationController
 			p = params.permit(:terms, :order)
 			if p['order']
 				attribute, asc_desc = p['order'].split(" ")
-				if ['terms', 'count', 'date'].include?(attribute) && ['asc', 'desc'].include?(asc_desc)
+				if ['terms', 'count', 'updated_at'].include?(attribute) && ['asc', 'desc'].include?(asc_desc)
 					return "#{attribute} #{asc_desc}"
 				end
 			end
